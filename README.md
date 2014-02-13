@@ -22,4 +22,4 @@ Statamic plugin using Behance API to pull in project data.
 
 ### Notes
 
-The plugin caches the data once a day so you shouldn't hit Behance's API request limits of 150 per hour. Unfortunantly, if you edit a Behance projects you will have to wait 24 hours to see the change on your site, or wipe out your cache if you are impatient. 
+The plugin caches the data once a day so you shouldn't hit Behance's API request limits of 150 per hour. Unfortunantly, if you edit a Behance project you will have to wait 24 hours to see the change on your site, or wipe out your cache if you are impatient. 
