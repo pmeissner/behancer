@@ -8,18 +8,25 @@ class Plugin_behancer extends Plugin {
 		'author'      => 'Philip Meissner',
 		'author_url'  => 'http://lou.pe'
 	);
+	
+	protected $client_id;
+	protected $client_secret;
+	
+	function __construct() {
+		
+		$this->client_id = $this->fetch('client_id', null, null, false, false);
+		$this->client_secret = $this->fetch('client_secret', null, null, false, false);
+		
+		$yesterday = time() - 60 * 60 * 24;
+		$this->cache->purgeFromBefore($yesterday);
+		
+	}
 
 
 	public function project() {
 
-		$beConfig = array();
-		$beConfig['client_id'] = $this->fetch('client_id', null, null, false, false);
-		$beConfig['client_secret'] = $this->fetch('client_secret', null, null, false, false);
-
 		$project_id = $this->fetchParam('id');
 
-		$yesterday = time() - 60 * 60 * 24;
-		$this->cache->purgeFromBefore($yesterday);
 
 		if ($this->cache->exists($project_id . '_project.yaml')) {
 
@@ -29,7 +36,7 @@ class Plugin_behancer extends Plugin {
 
 			require_once( 'lib/Be/Api.php' );
 
-			$api = new Be_Api( $beConfig['client_id'], $beConfig['client_secret'] );
+			$api = new Be_Api( $this->client_id, $this->client_secret );
 			$project = $api->getProject($project_id);
 
 			$encoded = json_encode($project);
@@ -46,14 +53,7 @@ class Plugin_behancer extends Plugin {
 
 	public function listing() {
 
-		$beConfig = array();
-		$beConfig['client_id'] = $this->fetch('client_id', null, null, false, false);
-		$beConfig['client_secret'] = $this->fetch('client_secret', null, null, false, false);
-
 		$user_id = $this->fetchParam('user');
-
-		$yesterday = time() - 60 * 60 * 24;
-		$this->cache->purgeFromBefore($yesterday);
 
 		if ($this->cache->exists($user_id . '_user.yaml')) {
 
@@ -63,7 +63,7 @@ class Plugin_behancer extends Plugin {
 
 			require_once( 'lib/Be/Api.php' );
 
-			$api = new Be_Api( $beConfig['client_id'], $beConfig['client_secret'] );
+			$api = new Be_Api( $this->client_id, $this->client_secret );
 			$listing = $api->getUserProjects($user_id);
 
 			$encoded = "{\"listing\":" . json_encode($listing) . "}";
