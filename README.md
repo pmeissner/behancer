@@ -18,3 +18,7 @@ Statamic plugin using Behance API to pull in project data.
   {{ /modules }}
 {{ /behancer }}
 ```
+
+### Notes
+
+The plugin caches the data once a day so you shouldn't hit Behance's API data limits. However, if you edit a Behance projects you will have to wait 24 hours to see the change on your site, or wipe out your cache if your impatient. 
