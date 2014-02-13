@@ -1,5 +1,5 @@
-Behancer
-========
+Behancer for Statamic by (http://lou.pe)[Philip Meissner]
+=========================================================
 
 Statamic plugin using Behance API to pull in project data.
 
