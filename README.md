@@ -7,7 +7,7 @@ Statamic plugin using Behance API to pull in project data
 
 All the Behance data is turned into YAML that is accessible in your templates. If you want to pull in your project's hi-res images, use the following code:
 
-@@@
+```
 {{ behancer id="{{ project_id }}" }}
   {{ modules }}
     {{ sizes }}
@@ -15,4 +15,4 @@ All the Behance data is turned into YAML that is accessible in your templates. I
     {{ /sizes }}
   {{ /modules }}
 {{ /behancer }}
-@@@
+```
