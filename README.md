@@ -1,6 +1,6 @@
 Behancer Statamic Plugin
 ========================
-*by [Philip Meissner](http://lou.pe) 
+*by [Philip Meissner](http://lou.pe)* 
 
 Statamic plugin using Behance API to pull in a single project data or a list of projects.
 
