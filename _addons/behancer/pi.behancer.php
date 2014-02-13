@@ -18,7 +18,7 @@ class Plugin_behancer extends Plugin {
 
 		$project_id = $this->fetchParam('id');
 
-		$yesterday = time() - 1;
+		$yesterday = time() - 60 * 60 * 24;
 		$this->cache->purgeFromBefore($yesterday);
 
 		if ($this->cache->exists($project_id . '_project.yaml')) {
